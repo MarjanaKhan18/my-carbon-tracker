@@ -54,6 +54,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; /* Added for responsiveness */
         }
 
         .logo {
@@ -73,6 +74,8 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            flex-wrap: wrap; /* Added for responsiveness */
+            justify-content: center; /* Center items on wrap */
         }
 
         .nav-links .nav-item {
@@ -342,13 +345,14 @@
 
         /* Tables */
         .table-container {
-            overflow-x: auto;
+            overflow-x: auto; /* Added for responsive tables */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
+            min-width: 600px; /* Ensure table doesn't get too squished */
         }
 
         table thead {
@@ -390,7 +394,7 @@
         /* Tips */
         .tips-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
             gap: 1.5rem;
         }
 
@@ -513,6 +517,8 @@
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease-in-out;
+            padding: 20px; /* Added padding for small screens */
+            box-sizing: border-box; /* Added for consistent padding */
         }
 
         .modal-content {
@@ -520,8 +526,8 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 500px;
+            width: 90%; /* Adjusted width for responsiveness */
+            max-width: 500px; /* Added max-width */
             animation: popUp 0.3s ease-in-out;
         }
 
@@ -607,6 +613,143 @@
         @keyframes popUp {
             from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px; /* Adjusted padding for smaller screens */
+            }
+
+            nav {
+                flex-direction: column; /* Stack logo and nav-links vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 1rem; /* Space between logo and nav-links */
+            }
+
+            .nav-links {
+                width: 100%; /* Full width for nav links */
+                justify-content: space-around; /* Distribute links evenly */
+                gap: 0.5rem; /* Smaller gap between nav items */
+            }
+
+            .nav-links .nav-item {
+                padding: 6px 8px; /* Smaller padding for nav items */
+                font-size: 0.9rem; /* Smaller font size */
+            }
+
+            .profile-dropdown {
+                margin-left: auto; /* Push profile icon to the right */
+            }
+
+            .hero {
+                padding: 3rem 1.5rem; /* Adjusted padding */
+            }
+
+            .hero h1 {
+                font-size: 2.5rem; /* Smaller font size */
+            }
+
+            .hero p {
+                font-size: 1.1rem; /* Smaller font size */
+            }
+
+            .dashboard-section, .form-section, .history-section, .tips-section, .profile-section {
+                padding: 1.5rem; /* Adjusted padding */
+            }
+
+            .dashboard-row {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted minmax for smaller cards */
+                gap: 1rem; /* Smaller gap */
+            }
+
+            .card {
+                padding: 1rem; /* Smaller card padding */
+            }
+
+            .card-value {
+                font-size: 2rem; /* Smaller card value font size */
+            }
+
+            .section-title {
+                font-size: 1.5rem; /* Smaller section title font size */
+            }
+
+            #carbon-form {
+                grid-template-columns: 1fr; /* Stack form inputs vertically */
+            }
+
+            button[type="submit"] {
+                max-width: 100%; /* Full width button */
+                justify-self: stretch; /* Stretch button */
+            }
+
+            table {
+                min-width: unset; /* Allow table to shrink */
+            }
+
+            table th, table td {
+                padding: 10px 8px; /* Smaller table padding */
+                font-size: 0.9rem; /* Smaller font size for table text */
+            }
+
+            .tips-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax for tips */
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr; /* Stack profile items vertically */
+            }
+
+            .profile-item {
+                padding: 1rem; /* Smaller profile item padding */
+            }
+
+            .profile-item i {
+                font-size: 1.5rem; /* Smaller icon size */
+            }
+
+            .profile-item span {
+                font-size: 0.8rem; /* Smaller font size */
+            }
+
+            .profile-item p {
+                font-size: 0.9rem; /* Smaller font size */
+            }
+
+            .modal-content {
+                padding: 1.5rem; /* Smaller modal padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .dashboard-row {
+                grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+            }
+
+            .card-value {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr; /* Stack tips vertically */
+            }
+
+            .modal-content {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
